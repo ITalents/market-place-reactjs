@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { loginUserApi } from '../services/authService';
 
 const useAuth = () => {
   const [userLogged, setUserLogged] = useState(false);
@@ -17,15 +18,8 @@ const useAuth = () => {
   }, [])
 
   const loginUser = async (inputValues) => {
-    const response = await fetch('http://localhost:3000/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(inputValues)
-    })
-    const data = await response.json();
-    console.log(data);
+    const response = await loginUserApi(inputValues);
+    const data = await response.data;
     localStorage.setItem('userInfo', JSON.stringify(data))
     navigate('/')
     setUserLogged(true);

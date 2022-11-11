@@ -8,6 +8,7 @@ import ProtectedRoute from './routes/ProtectedRoute';
 import Register from './pages/Register/index';
 import Admin from './pages/Admin';
 import AddProduct from './pages/AddProduct/index';
+import EditProduct from './pages/EditProduct/index';
 
 
 function App() {
@@ -28,9 +29,14 @@ function App() {
               <Admin/>
             </ProtectedRoute>
           }/>
-          <Route path='/add-product' element={
+          <Route path='/admin/add-product' element={
             <ProtectedRoute>
               <AddProduct/>
+            </ProtectedRoute>
+          }/>
+          <Route path='/admin/edit-product/:id' element={
+            <ProtectedRoute>
+              <EditProduct/>
             </ProtectedRoute>
           }/>
         </Routes>

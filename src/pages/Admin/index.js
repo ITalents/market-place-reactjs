@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaEdit } from 'react-icons/fa'
 import { MdDelete } from 'react-icons/md';
 import { Link, useNavigate } from 'react-router-dom';
-import { findAllProducts } from "../../services/productService";
+import { findAllProducts, deleteProduct } from "../../services/productService";
 
 const Admin = () => {
   const [products, setProducts] = useState([])
@@ -15,6 +15,14 @@ const Admin = () => {
   const getAllProducts = async() => {
     const response = await findAllProducts();
     setProducts(response.data);
+  }
+
+  const removeProduct = async (id) => {
+    const answer = window.confirm('Deseja excluir o produto ?')
+    if(answer) {
+      await deleteProduct(id);
+      getAllProducts();
+    }
   }
 
   return (
@@ -80,7 +88,7 @@ const Admin = () => {
                           <Link to={`/admin/edit-product/${product._id}`}>
                             <FaEdit className="cursor-pointer text-2xl text-blue-400"/>
                           </Link>
-                          <MdDelete className="cursor-pointer text-2xl text-red-600" />
+                          <MdDelete onClick={() => removeProduct(product._id)} className="cursor-pointer text-2xl text-red-600" />
                         </div>
                       </td>
                     </tr>

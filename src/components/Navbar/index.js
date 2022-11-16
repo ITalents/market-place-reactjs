@@ -11,7 +11,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   
   return (
-    <header className='bg-transparent z-50 w-full'>
+    <header className='bg-white fixed top-0 z-50 w-full'>
       <nav className='flex items-center max-w-screen-xl mx-auto px-6 py-3'>
         <div className='flex flex-grow items-center'>
           <img onClick={() => navigate('/')} src={logo} alt="Logo" className='w-36 cursor-pointer' />
@@ -20,7 +20,7 @@ const Navbar = () => {
         {userLogged ? (
           <div className='flex items-center justify-end space-x-4'>
             <div className='relative flex cursor-pointer'>
-              <span className='bg-primary w-4 h-4 rounded-full p-1 flex items-center justify-center text-white absolute -right-2 -top-2'>2</span>
+              <span className='bg-primary w-4 h-4 rounded-full p-1 flex items-center justify-center text-white absolute -right-2 -top-2'></span>
               <BsFillCartFill className='w-6 h-6 cursor-pointer'/>
             </div>
             <img src="" alt="" />

@@ -10,6 +10,8 @@ import Admin from './pages/Admin';
 import AddProduct from './pages/AddProduct/index';
 import EditProduct from './pages/EditProduct/index';
 import ProductInfo from './pages/ProductInfo';
+import Cart from './pages/Cart';
+import Complete from './pages/Complete/index';
 
 
 function App() {
@@ -28,6 +30,16 @@ function App() {
               <ProductInfo/>
             </ProtectedRoute>
           }/>  
+          <Route path='/cart' element={
+            <ProtectedRoute>
+              <Cart/>
+            </ProtectedRoute>
+          }/> 
+          <Route path='/complete' element={
+            <ProtectedRoute>
+              <Complete/>
+            </ProtectedRoute>
+          }/> 
           <Route path='/login' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
           <Route path='/admin' element={
